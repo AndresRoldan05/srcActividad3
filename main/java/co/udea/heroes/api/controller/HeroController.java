@@ -1,10 +1,12 @@
 package co.udea.heroes.api.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import co.udea.heroes.api.model.Hero;
 import co.udea.heroes.api.service.HeroService;
+import co.udea.heroes.api.service.impl.HeroServiceImpl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,11 +16,12 @@ import java.util.List;
 
 public class HeroController {
 	
-	private HeroService heroservice = new HeroService();
+	@Autowired
+	private HeroService heroservice;
 	
 	@RequestMapping("Listar")
 	public List<Hero> getHeroes(){
 		
-		return heroservice.getService();}
+		return heroservice.getHeroes();}
 
 }
