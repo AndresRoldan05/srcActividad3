@@ -1,0 +1,3 @@
+server:
+ context-path: /heroapiport
+ port: 8080
