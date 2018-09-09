@@ -6,18 +6,22 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import co.udea.heroes.api.model.Hero;
+import co.udea.heroes.api.repository.HeroRepository;
 import co.udea.heroes.api.service.HeroService;
 
 @Service
 public class HeroServiceImpl implements HeroService {
 
+	private HeroRepository heroRepository;
+	
+	public HeroServiceImpl(HeroRepository heroRepository) {
+		this.heroRepository=heroRepository;
+	}
+	
 	@Override
 	public List<Hero> getHeroes() {
-		List<Hero> heroes = new ArrayList<Hero>();
-		heroes.add(new Hero(1, "Spider-man"));
-		heroes.add(new Hero(1, "Hulk"));
-		heroes.add(new Hero(1, "Ironman"));
-		return heroes;}
+		
+		return heroRepository.findAll();}
 
 
 }
