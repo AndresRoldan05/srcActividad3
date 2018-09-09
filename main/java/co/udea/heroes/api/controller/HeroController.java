@@ -19,9 +19,28 @@ public class HeroController {
 	@Autowired
 	private HeroService heroservice;
 	
-	@RequestMapping("Listar")
-	public List<Hero> getHeroes(){
+	@RequestMapping("listar")
+	public List<Hero> getHeroes(){//GET
 		
 		return heroservice.getHeroes();}
+	
+	@RequestMapping("consultar")
+	public Hero getHero(int id) {//GET
+		// Hero hero = heroservice.findById(id);
+		return heroservice.getHero(id);
+		//return null;	
+		}
+	
+	@RequestMapping("buscar")	//GET
+	public Hero searchHeroes(String term) {return heroservice.searchHeroes(term);}
+	
+	@RequestMapping("actualizar")  //PUT
+	public Hero updateHero(Hero hero) {return heroservice.updateHero(hero);}
+	
+	@RequestMapping("crear") //PUT
+	public Hero addHero(Hero hero) {return heroservice.addHero(hero);}
+	
+	@RequestMapping("borrar")  //DELETE
+	public void deleteHero(Hero hero) {heroservice.deleteHero(hero);}
 
 }
